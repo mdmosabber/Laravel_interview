@@ -5,7 +5,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">Product Name</label>
+                            <label for="">Product Name </label>
                             <input type="text" v-model="product_name" placeholder="Product Name" class="form-control">
                         </div>
                         <div class="form-group">
@@ -126,8 +126,11 @@ export default {
             ],
             product_variant_prices: [],
             dropzoneOptions: {
-                url: 'https://httpbin.org/post',
+                url: "http://localhost:8000/product",
+                paramName: "file",
                 thumbnailWidth: 150,
+                autoProcessQueue: false,
+                uploadMultiple: true,
                 maxFilesize: 0.5,
                 headers: {"My-Awesome-Header": "header value"}
             }
@@ -190,7 +193,7 @@ export default {
 
 
             axios.post('/product', product).then(response => {
-                console.log(response.data);
+                console.log(response);
             }).catch(error => {
                 console.log(error);
             })
